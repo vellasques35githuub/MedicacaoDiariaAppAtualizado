@@ -90,6 +90,13 @@ namespace MedicacaoDiariaApp.Helpers
         ORDER BY Horario";
             return _conn.QueryAsync<ListaMedicamento>(query);
         }
+        public Task<List<Medicamento>> Search(String q)
+        {
+            string sql = "SELECT * FROM Medicamento Where nome LIKE '%" + q + "%'";
+
+            return _conn.QueryAsync<Medicamento>(sql);
+
+        }
 
     }
 }
